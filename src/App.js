@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ActionButton from './components/actionButton/ActionButton';
+import Select from './components/select/Select';
 
 class App extends React.Component {
   constructor() {
@@ -46,11 +47,21 @@ class App extends React.Component {
   }
 
   render() {
+    const { countries } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
           <h1>Frontend Dev CS</h1>
           <ActionButton handleClick={this.fetchCountriesData} />
+
+          {countries.length > 0 &&
+            <div>
+              <Select label="Continent Name" defaultValue="all" countries={countries} />
+              <Select label="Metric" defaultValue="all" countries={countries} />
+              <Select label="Chart Max Results" defaultValue="5" countries={countries} />
+            </div>
+          }
         </header>
       </div>
     );
